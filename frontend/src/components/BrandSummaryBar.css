@@ -1,0 +1,96 @@
+.brand-summary {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 1rem 0 12px 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.brand-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.brand-metrics {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.metric-value {
+  font-weight: 700;
+  font-size: 18px;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.metric-label {
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+/* Mobile: Stack vertically with smaller fonts */
+@media (max-width: 768px) {
+  .brand-summary {
+    padding: 12px 16px;
+    margin: 0.75rem 0;
+    border-radius: 12px;
+  }
+
+  .brand-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .brand-metrics {
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .metric-value {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .metric-label {
+    font-size: 11px;
+  }
+}
+
+/* Tablet: Medium layout */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .brand-summary {
+    padding: 14px 18px;
+  }
+
+  .brand-title {
+    font-size: 20px;
+  }
+
+  .brand-metrics {
+    gap: 24px;
+  }
+
+  .metric-value {
+    font-size: 16px;
+  }
+
+  .metric-label {
+    font-size: 11px;
+  }
+}

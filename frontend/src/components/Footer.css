@@ -1,0 +1,32 @@
+.ims-footer {
+  border-top: 1px solid #e5e7eb;
+  background-color: #fafafa;
+  padding: 14px 16px;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.ims-footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ims-footer-separator {
+  color: #d1d5db;
+}
+
+@media (max-width: 768px) {
+  .ims-footer {
+    padding: 12px 12px;
+    font-size: 11px;
+  }
+}
+
+
+

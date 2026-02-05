@@ -1,0 +1,89 @@
+.mobile-pagination-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 9999;     /* always on top */
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.75rem 1rem;
+  border-top: 1px solid #e5e7eb;
+  background: #fafafa;
+}
+
+.mobile-pagination-btn {
+  min-width: 64px;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid #d1d5db;
+  background: white;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: #374151;
+  font-weight: 500;
+  touch-action: manipulation;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.mobile-pagination-btn:hover:not(:disabled) {
+  background: #f3f4f6;
+  border-color: #4b5563;
+}
+
+.mobile-pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mobile-pagination-pages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.mobile-pagination-page {
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #4b5563;
+  touch-action: manipulation;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.mobile-pagination-page:hover {
+  background: #e5e7eb;
+  border-color: #9ca3af;
+}
+
+.mobile-pagination-page.active {
+  background: white;
+  border-color: #4b5563;
+  color: #111827;
+  font-weight: 600;
+}
+
+.mobile-pagination-ellipsis {
+  padding: 0 0.25rem;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+@media (min-width: 769px) {
+  .mobile-pagination-bar {
+    display: none;
+  }
+}
+
+
+

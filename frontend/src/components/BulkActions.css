@@ -1,0 +1,164 @@
+.bulk-actions-toolbar {
+  background: #4a90e2;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bulk-actions-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.selected-count {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.bulk-actions-buttons {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-clear-selection,
+.btn-bulk-edit,
+.btn-change-category,
+.btn-delete-selected,
+.btn-export-csv {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.btn-clear-selection {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-clear-selection:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.btn-bulk-edit {
+  background: white;
+  color: #4a90e2;
+}
+
+.btn-bulk-edit:hover {
+  background: #f0f0f0;
+}
+
+.btn-change-category {
+  background: white;
+  color: #4a90e2;
+}
+
+.btn-change-category:hover {
+  background: #f0f0f0;
+}
+
+.btn-delete-selected {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-delete-selected:hover {
+  background: #c82333;
+}
+
+.btn-export-csv {
+  background: #28a745;
+  color: white;
+}
+
+.btn-export-csv:hover {
+  background: #218838;
+}
+
+.bulk-edit-form,
+.bulk-category-form {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.bulk-input,
+.bulk-select {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  min-width: 120px;
+}
+
+.bulk-select {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.bulk-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.bulk-input:focus,
+.bulk-select:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.bulk-select option {
+  background: #4a90e2;
+  color: white;
+}
+
+.btn-apply,
+.btn-cancel {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-apply {
+  background: white;
+  color: #4a90e2;
+}
+
+.btn-apply:hover {
+  background: #f0f0f0;
+}
+
+.btn-cancel {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
