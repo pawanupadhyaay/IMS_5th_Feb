@@ -76,12 +76,12 @@ const Dashboard = () => {
   const pagination = productsData?.pagination || { page: 1, limit: pageSize, total: 0, pages: 0 }
   const allProducts = allProductsData?.data || []
   
-  // Build brands dynamically from products
+  // Build brands dynamically from products + a small static list (so new brands are always available)
   const brands = useMemo(() => {
-    return allProducts
-      .map(p => p.brand)
+    const STATIC_BRANDS = ['Timex', 'Cerruti']
+    return [...allProducts.map(p => p.brand), ...STATIC_BRANDS]
       .filter(Boolean)          // remove null/undefined
-      .map(b => b.trim())       // remove spaces
+      .map(b => b.trim())       // remove extra spaces
       .filter(b => b.length)    // remove empty strings
       .filter((b, i, a) => a.indexOf(b) === i) // unique
       .sort((a, b) => a.localeCompare(b))

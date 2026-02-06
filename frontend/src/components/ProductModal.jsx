@@ -16,9 +16,40 @@ import {
 } from '../constants/productOptions'
 import './ProductModal.css'
 
+const DIAL_COLOR_OPTIONS = [
+  'Black',
+  'Brown',
+  'Blue',
+  'Red',
+  'Green',
+  'White',
+  'Grey',
+  'Silver',
+  'Gold',
+  'Rose Gold',
+  'Leather Brown',
+  'Leather Black',
+  'Metal Silver',
+  'Metal Gold',
+  'Rubber Black',
+  'Rubber Blue',
+  'Fabric',
+  'NATO',
+  'Two Toned',
+  'Multi Color',
+  'Champagne',
+  'Mother of Pearl',
+  'Beige',
+  'Bronze',
+  'Pink',
+  'Maroon',
+  'Transparent',
+]
+
 const ProductModal = ({ product, mode, onClose, onSave, brands = [] }) => {
   const [formData, setFormData] = useState({
     brand: '',
+    title: '',
     sku: '',
     category: '',
     inventory: 0,
@@ -55,6 +86,7 @@ const ProductModal = ({ product, mode, onClose, onSave, brands = [] }) => {
     setFormData((prev) => ({
       ...prev,
       brand: displayProduct.brand || prev.brand || '',
+      title: displayProduct.title || '',
       sku: displayProduct.sku || prev.sku || '',
       category: displayProduct.category || '',
       inventory: displayProduct.inventory ?? 0,
@@ -216,6 +248,23 @@ const ProductModal = ({ product, mode, onClose, onSave, brands = [] }) => {
                 )}
               </div>
               <div className="form-group">
+                <label>Title</label>
+                {isViewMode ? (
+                  <div style={{ padding: '0.75rem', background: '#f8f9fa', border: '1px solid #ddd', borderRadius: '4px', color: '#333' }}>
+                    {displayProduct?.title?.trim() || '—'}
+                  </div>
+                ) : (
+                  <input
+                    type="text"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleChange}
+                    disabled={isViewMode}
+                    required={mode === 'create'}
+                  />
+                )}
+              </div>
+              <div className="form-group">
                 <label>SKU</label>
                 <input
                   type="text"
@@ -359,13 +408,20 @@ const ProductModal = ({ product, mode, onClose, onSave, brands = [] }) => {
                     {displayProduct?.dialColor || '-'}
                   </div>
                 ) : (
-                  <input
-                    type="text"
+                  <select
                     name="dialColor"
                     value={formData.dialColor}
                     onChange={handleChange}
                     disabled={isViewMode}
-                  />
+                    className="form-select"
+                  >
+                    <option value="">Select Dial Color</option>
+                    {DIAL_COLOR_OPTIONS.map((option) => (
+                      <option key={option} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
                 )}
               </div>
               <div className="form-group">

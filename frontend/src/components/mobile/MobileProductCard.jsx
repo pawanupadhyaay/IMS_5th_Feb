@@ -45,6 +45,11 @@ const MobileProductCard = memo(({ product, serial, onView, onEdit, onMoreClick, 
             </div>
             <div className="mobile-product-sku">{product.sku || 'No SKU'}</div>
           </div>
+          {product.title && product.title.trim().length > 0 && (
+            <div className="mobile-product-title-text">
+              {product.title.trim()}
+            </div>
+          )}
           <div className="mobile-product-category">{product.category || 'Uncategorized'}</div>
         </div>
       </div>

@@ -95,7 +95,7 @@ const getProduct = async (req, res) => {
   try {
     // Include legacy fields for migration: imageUrl, image.url
     const product = await Product.findById(req.params.id)
-      .select('brand sku category inventory price oldPrice images imageUrl image.url description caseMaterial dialColor waterResistance warrantyPeriod movement gender strapColor caseShape caseSize createdAt updatedAt')
+      .select('brand title sku category inventory price oldPrice images imageUrl image.url description caseMaterial dialColor waterResistance warrantyPeriod movement gender strapColor caseShape caseSize createdAt updatedAt')
       .lean();
     
     if (!product) {
@@ -274,6 +274,7 @@ const patchProduct = async (req, res) => {
     const updateObj = {};
     const allowedFields = [
       "brand",
+      "title",
       "sku",
       "category",
       "inventory",
@@ -342,6 +343,7 @@ const patchProduct = async (req, res) => {
     const changes = {};
     // Only track editable fields that can be changed via PATCH
     const trackableFields = [
+      "title",
       "category",
       "inventory",
       "price",

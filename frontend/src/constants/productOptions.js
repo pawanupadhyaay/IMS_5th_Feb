@@ -12,6 +12,7 @@ export const CATEGORY_OPTIONS = [
   'Casual',
   'Formal',
   'Vintage',
+  'Watchmaker',
 ]
 
 export const CASE_MATERIAL_OPTIONS = [
@@ -94,6 +95,15 @@ export const STRAP_COLOR_OPTIONS = [
   'Rubber Blue',
   'Fabric',
   'NATO',
+  'Two Toned',
+  'Multi Color',
+  'Champagne',
+  'Mother of Pearl',
+  'Beige',
+  'Bronze',
+  'Pink',
+  'Maroon',
+  'Transparent'
 ]
 
 export const CASE_SHAPE_OPTIONS = [
