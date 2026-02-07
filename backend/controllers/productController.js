@@ -95,7 +95,7 @@ const getProduct = async (req, res) => {
   try {
     // Include legacy fields for migration: imageUrl, image.url
     const product = await Product.findById(req.params.id)
-      .select('brand title sku category inventory price oldPrice images imageUrl image.url description caseMaterial dialColor waterResistance warrantyPeriod movement gender strapColor caseShape caseSize createdAt updatedAt')
+      .select('brand sku category inventory price oldPrice images imageUrl image.url description title caseMaterial dialColor waterResistance warrantyPeriod movement gender strapColor caseShape caseSize createdAt updatedAt')
       .lean();
     
     if (!product) {
@@ -263,18 +263,17 @@ const patchProduct = async (req, res) => {
     }
 
     // Fetch existing product to get previous price
-    const oldProduct = await Product.findById(id).lean();
-    if (!oldProduct) {
+    const currentProduct = await Product.findById(id);
+    if (!currentProduct) {
       return res.status(404).json({ message: "Product not found" });
     }
 
-    const previousPrice = oldProduct.price || 0;
+    const previousPrice = currentProduct.price || 0;
 
     // Build update object with $set for partial updates
     const updateObj = {};
     const allowedFields = [
       "brand",
-      "title",
       "sku",
       "category",
       "inventory",
@@ -322,6 +321,12 @@ const patchProduct = async (req, res) => {
     // Remove samePriceChecked from updateObj (it's not a database field)
     delete updateObj.samePriceChecked;
 
+    // Create a temporary product object with updates to compare changes
+    const updatedProductData = { ...currentProduct.toObject(), ...updateObj };
+
+    // Track changes before updating
+    const changes = compareProductChanges(currentProduct, updatedProductData);
+
     // Perform partial update
     const product = await Product.findByIdAndUpdate(
       id,
@@ -335,39 +340,6 @@ const patchProduct = async (req, res) => {
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
     }
-
-    // Get updated product after update (as plain object for comparison)
-    const updatedProduct = product.toObject();
-
-    // Create changes object - track only editable fields
-    const changes = {};
-    // Only track editable fields that can be changed via PATCH
-    const trackableFields = [
-      "title",
-      "category",
-      "inventory",
-      "price",
-      "oldPrice",
-      "description",
-      "caseMaterial",
-      "dialColor",
-      "waterResistance",
-      "warrantyPeriod",
-      "movement",
-      "gender",
-      "strapColor",
-      "caseShape",
-      "caseSize",
-    ];
-
-    trackableFields.forEach(field => {
-      if (oldProduct[field] !== updatedProduct[field]) {
-        changes[field] = {
-          before: oldProduct[field],
-          after: updatedProduct[field]
-        };
-      }
-    });
 
     // Clear brands cache if brand was updated
     if (updates.brand !== undefined) {
@@ -383,7 +355,7 @@ const patchProduct = async (req, res) => {
 
     // Log activity (non-blocking) with changes
     console.log('Activity log triggered: UPDATE', product.sku || 'N/A')
-    const activityLog = {
+    logActivity({
       actionType: 'UPDATE',
       brand: product.brand || '',
       sku: product.sku || '',
@@ -391,14 +363,8 @@ const patchProduct = async (req, res) => {
       adminId: req.user.id,
       adminName: req.user.name || 'Unknown',
       adminEmail: req.user.email || '',
-    };
-    
-    // Only add changes field if there are actual changes
-    if (Object.keys(changes).length > 0) {
-      activityLog.changes = changes;
-    }
-    
-    logActivity(activityLog);
+      changes: changes,
+    });
 
     // Return full product (not just updated fields) to ensure images are included
     res.json({ success: true, data: product });

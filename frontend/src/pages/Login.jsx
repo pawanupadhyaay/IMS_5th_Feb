@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AuthContext } from '../context/AuthContext'
 import './Auth.css'
@@ -15,31 +15,8 @@ const Login = () => {
     if (typeof window === 'undefined') return false
     return !!localStorage.getItem('rememberedEmail')
   })
-  const { login, user, loading: authLoading } = useContext(AuthContext)
+  const { login } = useContext(AuthContext)
   const navigate = useNavigate()
-
-  // Redirect to dashboard if user is already logged in
-  useEffect(() => {
-    if (!authLoading && user) {
-      navigate('/dashboard', { replace: true })
-    }
-  }, [user, authLoading, navigate])
-
-  // Show loading state while checking authentication
-  if (authLoading) {
-    return (
-      <div className="auth-container">
-        <div className="auth-box">
-          <div>Loading...</div>
-        </div>
-      </div>
-    )
-  }
-
-  // Don't render login form if user is already logged in (will redirect)
-  if (user) {
-    return null
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()

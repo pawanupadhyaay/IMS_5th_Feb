@@ -42,7 +42,7 @@ const logActivity = (params) => {
           adminName: params.adminName || 'Unknown',
           adminEmail: params.adminEmail || '',
           metadata: params.metadata || {},
-          changes: params.changes || {},
+          changes: params.changes || null,
         }
         
         console.log('Creating activity log:', logData.actionType, logData.sku, logData.productId)

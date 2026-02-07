@@ -111,31 +111,35 @@ const ActivityDetailsModal = memo(({ log, onClose }) => {
             </div>
           </div>
 
-          {/* Changes Section */}
+          {/* Changes Diff Section */}
           {log.changes && Object.keys(log.changes).length > 0 && (
             <div className="changes-section">
-              <h3 className="changes-title">Changes:</h3>
+              <h3 className="changes-title">Changes Made</h3>
               <div className="changes-list">
-                {Object.entries(log.changes).map(([field, change]) => {
-                  // Support both new format (before/after) and old format (old/new) for backward compatibility
-                  const beforeValue = change.before !== undefined ? change.before : change.old;
-                  const afterValue = change.after !== undefined ? change.after : change.new;
-                  
-                  const formatBefore = field === 'price' || field === 'oldPrice' 
-                    ? formatCurrency(beforeValue)
-                    : formatFieldValue(beforeValue);
-                  
-                  const formatAfter = field === 'price' || field === 'oldPrice'
-                    ? formatCurrency(afterValue)
-                    : formatFieldValue(afterValue);
-                  
-                  return (
-                    <div key={field} className="change-item">
-                      <span className="change-label">{getFieldLabel(field)}:</span>
-                      <span className="change-value">{formatBefore} → {formatAfter}</span>
+                {Object.entries(log.changes).map(([field, change]) => (
+                  <div key={field} className="change-item">
+                    <div className="change-field-name">{getFieldLabel(field)}</div>
+                    <div className="change-values">
+                      <div className="change-old">
+                        <span className="change-label">Before:</span>
+                        <span className="change-value old-value">
+                          {field === 'price' || field === 'oldPrice' 
+                            ? formatCurrency(change.old)
+                            : formatFieldValue(change.old)}
+                        </span>
+                      </div>
+                      <div className="change-arrow">→</div>
+                      <div className="change-new">
+                        <span className="change-label">After:</span>
+                        <span className="change-value new-value">
+                          {field === 'price' || field === 'oldPrice'
+                            ? formatCurrency(change.new)
+                            : formatFieldValue(change.new)}
+                        </span>
+                      </div>
                     </div>
-                  );
-                })}
+                  </div>
+                ))}
               </div>
             </div>
           )}

@@ -72,69 +72,52 @@
   font-weight: 500;
 }
 
-/* title column removed from desktop table; titles are shown in other views */
-
 .table-cell.inventory .out-of-stock {
   color: #dc3545;
   font-weight: 600;
 }
 
 .table-cell.actions {
-  overflow: visible;           /* allow buttons to be fully visible */
-  white-space: nowrap;
-  display: flex;               /* align header text and row buttons consistently */
-  align-items: center;
-  justify-content: center;     /* center under the ACTIONS header */
-}
-
-.action-buttons {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  display: flex;
   gap: 0.5rem;
+  justify-content: flex-start;
 }
 
 .action-btn {
-  padding: 0.4rem 0.85rem;
-  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
   border: none;
+  border-radius: 4px;
   font-size: 0.85rem;
-  display: inline-block;
   cursor: pointer;
-  transition: background-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+  transition: all 0.2s;
   font-weight: 500;
-  min-width: 70px;
-}
-
-.action-btn:active {
-  transform: scale(0.96);
 }
 
 .view-btn {
-  background-color: #0ea5e9;
-  color: #ffffff;
+  background-color: #17a2b8;
+  color: white;
 }
 
 .view-btn:hover {
-  background-color: #0284c7;
+  background-color: #138496;
 }
 
 .edit-btn {
-  background-color: #f59e0b;
-  color: #111827;
+  background-color: #ffc107;
+  color: #333;
 }
 
 .edit-btn:hover {
-  background-color: #d97706;
+  background-color: #e0a800;
 }
 
 .delete-btn {
-  background-color: #ef4444;
-  color: #ffffff;
+  background-color: #dc3545;
+  color: white;
 }
 
 .delete-btn:hover {
-  background-color: #dc2626;
+  background-color: #c82333;
 }
 
 .loading-message,

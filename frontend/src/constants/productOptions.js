@@ -12,7 +12,6 @@ export const CATEGORY_OPTIONS = [
   'Casual',
   'Formal',
   'Vintage',
-  'Watchmaker',
 ]
 
 export const CASE_MATERIAL_OPTIONS = [

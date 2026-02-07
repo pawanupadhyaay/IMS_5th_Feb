@@ -110,34 +110,72 @@
 .changes-list {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .change-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid #f0f0f0;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
 }
 
-.change-item:last-child {
-  border-bottom: none;
-}
-
-.change-label {
+.change-field-name {
   font-weight: 600;
   color: #333;
   font-size: 0.9375rem;
-  min-width: fit-content;
-  flex-shrink: 0;
+  margin-bottom: 0.75rem;
+  text-transform: capitalize;
+}
+
+.change-values {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.change-old,
+.change-new {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 120px;
+}
+
+.change-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .change-value {
-  color: #666;
   font-size: 0.9375rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
   word-break: break-word;
-  flex: 1;
+}
+
+.old-value {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+}
+
+.new-value {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.change-arrow {
+  font-size: 1.25rem;
+  color: #4a90e2;
+  font-weight: 600;
+  flex-shrink: 0;
 }
 
 .metadata-display {
@@ -215,17 +253,19 @@
     max-height: 95vh;
   }
 
-  .change-item {
+  .change-values {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
+    align-items: stretch;
   }
 
-  .change-label {
-    font-size: 0.875rem;
+  .change-arrow {
+    transform: rotate(90deg);
+    text-align: center;
+    padding: 0.5rem 0;
   }
 
-  .change-value {
-    font-size: 0.875rem;
+  .change-old,
+  .change-new {
+    min-width: 100%;
   }
 }

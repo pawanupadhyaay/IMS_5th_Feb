@@ -52,7 +52,7 @@ const activityLogSchema = new mongoose.Schema(
     },
     changes: {
       type: mongoose.Schema.Types.Mixed,
-      default: {},
+      default: null,
     },
   },
   {

@@ -6,7 +6,6 @@
 
 .mobile-dashboard-main {
   min-height: calc(100vh - 200px);
-  padding-bottom: 90px;   /* space for fixed pagination */
 }
 
 .mobile-loading {

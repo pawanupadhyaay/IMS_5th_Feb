@@ -13,11 +13,6 @@ const productSchema = new mongoose.Schema(
       trim: true,
       default: "",
     },
-    title: {
-      type: String,
-      trim: true,
-      default: "",
-    },
     sku: {
       type: String,
       trim: true,
@@ -41,6 +36,11 @@ const productSchema = new mongoose.Schema(
       default: 0,
     },
     description: {
+      type: String,
+      trim: true,
+      default: "",
+    },
+    title: {
       type: String,
       trim: true,
       default: "",
@@ -136,13 +136,13 @@ function validateProduct(product) {
   const schema = Joi.object({
     user: Joi.string().optional(),
     brand: Joi.string().allow("").optional(),
-    title: Joi.string().allow("").optional(),
     sku: Joi.string().allow("").optional(),
     category: Joi.string().allow("").optional(),
     inventory: Joi.number().optional(),
     price: Joi.number().optional(),
     oldPrice: Joi.number().optional(),
     description: Joi.string().allow("").optional(),
+    title: Joi.string().allow("").optional(),
     images: Joi.array().items(Joi.string().allow("")).optional(),
     // Product Details (flat fields)
     caseMaterial: Joi.string().allow("").optional(),

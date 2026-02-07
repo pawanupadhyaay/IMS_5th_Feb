@@ -76,12 +76,12 @@ const Dashboard = () => {
   const pagination = productsData?.pagination || { page: 1, limit: pageSize, total: 0, pages: 0 }
   const allProducts = allProductsData?.data || []
   
-  // Build brands dynamically from products + a small static list (so new brands are always available)
+  // Build brands dynamically from products
   const brands = useMemo(() => {
-    const STATIC_BRANDS = ['Timex', 'Cerruti']
-    return [...allProducts.map(p => p.brand), ...STATIC_BRANDS]
+    return allProducts
+      .map(p => p.brand)
       .filter(Boolean)          // remove null/undefined
-      .map(b => b.trim())       // remove extra spaces
+      .map(b => b.trim())       // remove spaces
       .filter(b => b.length)    // remove empty strings
       .filter((b, i, a) => a.indexOf(b) === i) // unique
       .sort((a, b) => a.localeCompare(b))
@@ -241,11 +241,7 @@ const Dashboard = () => {
                 page={pagination.page}
                 limit={pagination.limit}
               />
-              {pagination.pages > 0 &&
-               !showModal &&
-               !showFilterSheet &&
-               !showActionSheet &&
-               selectedIds.size === 0 && (
+              {pagination.pages > 0 && (
                 <MobilePagination
                   page={pagination.page}
                   totalPages={pagination.pages}

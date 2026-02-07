@@ -84,26 +84,23 @@ const InventoryTable = memo(({ products, onView, onEdit, onDelete, loading, sele
         <div className="table-cell total-value">{formatCurrency(totalValue)}</div>
         <div className="table-cell actions">
           <button
-            type="button"
             onClick={() => onView(product)}
             className="action-btn view-btn"
-            title="View product"
+            title="View"
           >
             View
           </button>
           <button
-            type="button"
             onClick={() => onEdit(product)}
             className="action-btn edit-btn"
-            title="Edit product"
+            title="Edit"
           >
             Edit
           </button>
           <button
-            type="button"
             onClick={() => onDelete(product)}
             className="action-btn delete-btn"
-            title="Delete product"
+            title="Delete"
           >
             Delete
           </button>
