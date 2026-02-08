@@ -6,6 +6,8 @@
 
 .mobile-dashboard-main {
   min-height: calc(100vh - 200px);
+  position: relative;
+  pointer-events: auto;
 }
 
 .mobile-loading {

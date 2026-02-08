@@ -7,6 +7,7 @@ import ImageManager from '../ImageManager'
 import {
   CATEGORY_OPTIONS,
   CASE_MATERIAL_OPTIONS,
+  DIAL_COLOR_OPTIONS,
   WATER_RESISTANCE_OPTIONS,
   WARRANTY_OPTIONS,
   MOVEMENT_OPTIONS,
@@ -129,6 +130,7 @@ const MobileProductModal = ({ product, mode, onClose, onSave, brands = [] }) => 
         // Ensure oldPrice = price for new products
         const createData = {
           ...formData,
+          title: formData.title || '',
           oldPrice: formData.oldPrice || formData.price || 0,
         }
         await createMutation.mutateAsync(createData)
@@ -137,6 +139,7 @@ const MobileProductModal = ({ product, mode, onClose, onSave, brands = [] }) => 
         // Send full formData (excluding read-only fields: brand, sku)
         const payload = {
           ...formData,
+          title: formData.title || '',
           images: formData.images?.filter(Boolean) || [],
           samePriceChecked: samePriceChecked,
         }
@@ -228,7 +231,7 @@ const MobileProductModal = ({ product, mode, onClose, onSave, brands = [] }) => 
                     <input
                       type="text"
                       name="brand"
-                      value={formData.brand}
+                      value={getDisplayBrand(formData.brand)}
                       readOnly
                       disabled
                       className="mobile-form-input mobile-form-input-readonly"
@@ -396,14 +399,20 @@ const MobileProductModal = ({ product, mode, onClose, onSave, brands = [] }) => 
                   {isViewMode ? (
                     <div className="mobile-view-value">{displayProduct?.dialColor || '-'}</div>
                   ) : (
-                    <input
-                      type="text"
+                    <select
                       name="dialColor"
                       value={formData.dialColor}
                       onChange={handleChange}
                       disabled={isViewMode}
                       className="mobile-form-input"
-                    />
+                    >
+                      <option value="">Select Dial Color</option>
+                      {DIAL_COLOR_OPTIONS.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
                   )}
                 </div>
                 <div className="mobile-form-group">

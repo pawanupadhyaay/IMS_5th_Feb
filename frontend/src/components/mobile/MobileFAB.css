@@ -7,6 +7,11 @@
   flex-direction: column-reverse;
   align-items: flex-end;
   gap: 1rem;
+  pointer-events: none; /* Allow clicks to pass through container */
+}
+
+.mobile-fab-container > * {
+  pointer-events: auto; /* But capture clicks on FAB and menu items */
 }
 
 .mobile-fab {

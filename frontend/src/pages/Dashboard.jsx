@@ -241,7 +241,12 @@ const Dashboard = () => {
                 page={pagination.page}
                 limit={pagination.limit}
               />
-              {pagination.pages > 0 && (
+              {pagination.pages > 0 && 
+               !showFilterSheet && 
+               selectedIds.size === 0 && 
+               !showModal && 
+               !showActionSheet && 
+               !showDeleteConfirm && (
                 <MobilePagination
                   page={pagination.page}
                   totalPages={pagination.pages}

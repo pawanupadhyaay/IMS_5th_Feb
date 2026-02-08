@@ -1,14 +1,19 @@
 .mobile-pagination-bar {
   position: sticky;
   bottom: 0;
-  z-index: 10;
+  z-index: 1001;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 1rem;
+  padding-right: 5.5rem; /* Space for FAB (56px + 1.5rem margin) on right side */
   border-top: 1px solid #e5e7eb;
   background: #fafafa;
+  pointer-events: auto;
+  -webkit-transform: translateZ(0); /* Force hardware acceleration */
+  transform: translateZ(0);
+  isolation: isolate; /* Create new stacking context */
 }
 
 .mobile-pagination-btn {
@@ -23,6 +28,9 @@
   color: #374151;
   font-weight: 500;
   touch-action: manipulation;
+  pointer-events: auto;
+  position: relative;
+  z-index: 1002;
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
@@ -37,10 +45,13 @@
 }
 
 .mobile-pagination-pages {
+  pointer-events: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
+  position: relative;
+  z-index: 1002;
 }
 
 .mobile-pagination-page {
@@ -54,6 +65,9 @@
   font-size: 0.85rem;
   color: #4b5563;
   touch-action: manipulation;
+  pointer-events: auto;
+  position: relative;
+  z-index: 1002;
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 

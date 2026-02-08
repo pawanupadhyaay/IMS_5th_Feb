@@ -274,6 +274,7 @@ const patchProduct = async (req, res) => {
     const updateObj = {};
     const allowedFields = [
       "brand",
+      "title", 
       "sku",
       "category",
       "inventory",

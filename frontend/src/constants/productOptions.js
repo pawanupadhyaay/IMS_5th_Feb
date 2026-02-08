@@ -12,6 +12,7 @@ export const CATEGORY_OPTIONS = [
   'Casual',
   'Formal',
   'Vintage',
+  'WatchMaker'
 ]
 
 export const CASE_MATERIAL_OPTIONS = [
@@ -27,6 +28,35 @@ export const CASE_MATERIAL_OPTIONS = [
   'Aluminum',
   'Resin',
   'Rubber'
+]
+export const DIAL_COLOR_OPTIONS = [
+  'Black',
+  'Brown',
+  'Blue',
+  'Red',
+  'Green',
+  'White',
+  'Grey',
+  'Silver',
+  'Gold',
+  'Rose Gold',
+  'Leather Brown',
+  'Leather Black',
+  'Metal Silver',
+  'Metal Gold',
+  'Rubber Black',
+  'Rubber Blue',
+  'Fabric',
+  'NATO',
+  'Two Toned',
+  'Multi Color',
+  'Champagne',
+  'Mother of Pearl',
+  'Beige',
+  'Bronze',
+  'Pink',
+  'Maroon',
+  'Transparent'
 ]
 
 export const WATER_RESISTANCE_OPTIONS = [
